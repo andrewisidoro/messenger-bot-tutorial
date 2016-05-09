@@ -49,26 +49,7 @@ app.post('/webhook/', function (req, res) {
 
 var token = "EAAP1vk86NaQBANoBaSt6cYq3H7ZCZCwWEbgcKoVLSuQFiCqRZBXRtgOCegZBfHtTFSAgj4ZCH6xtNBP0Wa7JPZANlJvjC5vPbkVBbAXJVKMLhacNZAKrqcbINbEPXIZAEGFJZBDZCD3MFxGOqlizQfuZARfZAXj9EQITTg66kfQgjlXI1gZDZD"
 
-function sendTextMessage(sender, text) {
-	messageData = {
-		text:text
-	}
-	request({
-		url: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: {access_token:token},
-		method: 'POST',
-		json: {
-			recipient: {id:sender},
-			message: messageData,
-		}
-	}, function(error, response, body) {
-		if (error) {
-			console.log('Error sending messages: ', error)
-		} else if (response.body.error) {
-			console.log('Error: ', response.body.error)
-		}
-	})
-}
+function sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 
 function sendGenericMessage(sender) {
 	messageData = {
